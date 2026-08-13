@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanbeer Gazi | Digital Marketer Portfolio</title>
+    <style>
+        :root {
+            --primary: #0070f3;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --grey: #64748b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        #hero {
+            padding-top: 10rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 80vh;
+            justify-content: center;
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #hero h1 span {
+            color: var(--primary);
+        }
+
+        #hero p {
+            font-size: 1.25rem;
+            color: var(--grey);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background: #0056b3;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .service-card p {
+            color: var(--grey);
+            font-size: 0.95rem;
+        }
+
+        #contact {
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            #hero h1 { font-size: 2.5rem; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">TG.</div>
+            <nav>
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <h1>Hi, I'm <span>Tanbeer Gazi</span></h1>
+        <p>A Results-Driven Digital Marketer Helping Brands Grow Online Through Strategic SEO, Paid Ads, and Content Marketing.</p>
+        <a href="#contact" class="btn">Let's Work Together</a>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: #e2e8f0;">
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--grey); font-size: 1.1rem;">
+            I specialize in building comprehensive digital strategies that connect brands with their ideal audience. From optimizing your search footprint to running high-ROI ad campaigns, I focus on measurable growth and data-backed decisions to help your business scale.
+        </p>
+    </section>
+
+    <section id="services">
+        <h2>My Expertise</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Search Engine Optimization</h3>
+                <p>Boost your organic visibility, rank higher on Google, and drive targeted traffic to your site with on-page and technical SEO.</p>
+            </div>
+            <div class="service-card">
+                <h3>Paid Advertising (PPC)</h3>
+                <p>Maximize your ROI with highly optimized Google Ads, Facebook Ads, and Instagram campaigns designed to convert clicks into customers.</p>
+            </div>
+            <div class="service-card">
+                <h3>Social Media Strategy</h3>
+                <p>Build an engaged online community, refine your brand voice, and schedule impactful organic social content.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-container">
+            <form action="#" method="POST" onsubmit="alert('Thank you for reaching out! Your form has been submitted.'); return false;">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" required placeholder="Tell me about your project..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="border: none; width: 100%; cursor: pointer;">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Tanbeer Gazi. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
