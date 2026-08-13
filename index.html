@@ -1,284 +1,574 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanbeer Gazi | Digital Marketer Portfolio</title>
-    <style>
-        :root {
-            --primary: #0070f3;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --grey: #64748b;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanbeer Gazi — Digital Marketer</title>
+<meta name="description" content="Tanbeer Gazi is a digital marketer helping founders and small teams turn ad spend, content and email into predictable pipeline.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FFFFFF;
+    --ink:#14181F;
+    --ink-muted:#5B6472;
+    --accent:#0B6E4F;
+    --accent-dark:#095A40;
+    --accent-soft:#EAF6F0;
+    --highlight:#FFC857;
+    --line:#E4E7EB;
+    --dark:#0F1410;
+    --dark-ink:#F3F6F4;
+    --dark-muted:#9AAAA1;
+    --step1:#EAF6F0;
+    --step2:#C7E9D9;
+    --step3:#7FCDA8;
+    --step4:#3B9E72;
+    --step5:#0B6E4F;
+    --radius:10px;
+    --maxw:1120px;
+  }
 
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk',system-ui,sans-serif;
+    font-weight:600;
+    line-height:1.12;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  section{padding:96px 0;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:inline-block;
+    margin-bottom:14px;
+  }
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head h2{font-size:clamp(28px,4vw,38px);}
+  .section-sub{color:var(--ink-muted);margin-top:14px;font-size:16.5px;}
 
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
 
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 2rem;
-        }
+  /* ---------- Nav ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw);margin:0 auto;padding:18px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;}
+  .logo span{color:var(--accent);}
+  .nav-links{display:flex;gap:32px;list-style:none;margin:0;padding:0;}
+  .nav-links a{font-size:14.5px;color:var(--ink-muted);transition:color .15s;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-cta{
+    background:var(--ink);color:#fff;padding:10px 20px;border-radius:100px;
+    font-size:14px;font-weight:500;white-space:nowrap;transition:background .15s;
+  }
+  .nav-cta:hover{background:var(--accent);}
+  .nav-right{display:flex;align-items:center;gap:28px;}
+  #menu-toggle{display:none;}
+  .burger{display:none;cursor:pointer;flex-direction:column;gap:5px;}
+  .burger span{width:22px;height:2px;background:var(--ink);display:block;}
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
+  @media (max-width:800px){
+    .nav-links{
+      position:absolute;top:100%;left:0;right:0;
+      background:var(--paper);border-bottom:1px solid var(--line);
+      flex-direction:column;gap:0;
+      max-height:0;overflow:hidden;transition:max-height .25s ease;
+    }
+    #menu-toggle:checked ~ .nav-links{max-height:320px;}
+    .nav-links li{border-top:1px solid var(--line);}
+    .nav-links a{display:block;padding:16px 28px;}
+    .burger{display:flex;}
+  }
 
-        nav a {
-            text-decoration: none;
-            color: var(--dark);
-            margin-left: 2rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+  /* ---------- Hero ---------- */
+  .hero{padding:76px 0 64px;}
+  .status-strip{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:12.5px;letter-spacing:0.06em;color:var(--ink-muted);
+    border:1px solid var(--line);border-radius:100px;padding:7px 16px;margin-bottom:28px;
+  }
+  .status-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none;}
+  .hero h1{font-size:clamp(38px,6vw,64px);max-width:15ch;}
+  .hero h1 em{
+    font-style:normal;color:var(--accent);
+    text-decoration:underline;text-decoration-color:var(--highlight);
+    text-decoration-thickness:4px;text-underline-offset:6px;
+  }
+  .hero-sub{font-size:18.5px;color:var(--ink-muted);max-width:52ch;margin-top:24px;}
+  .hero-cta-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:36px;align-items:center;}
+  .btn-primary{
+    background:var(--accent);color:#fff;padding:14px 26px;border-radius:8px;
+    font-weight:500;font-size:15px;border:none;cursor:pointer;transition:background .15s,transform .15s;
+    display:inline-block;
+  }
+  .btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px);}
+  .btn-secondary{
+    font-weight:500;font-size:15px;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:2px;
+  }
+  .btn-secondary:hover{color:var(--accent);border-color:var(--accent);}
 
-        nav a:hover {
-            color: var(--primary);
-        }
+  .channel-strip{
+    margin-top:64px;padding-top:32px;border-top:1px solid var(--line);
+    display:flex;flex-wrap:wrap;gap:12px;
+  }
+  .channel-tag{
+    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.04em;
+    color:var(--ink-muted);border:1px solid var(--line);border-radius:6px;padding:7px 12px;
+  }
 
-        section {
-            padding: 5rem 2rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
+  /* ---------- Services ---------- */
+  .services-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;
+  }
+  .service-card{
+    border:1px solid var(--line);border-radius:var(--radius);padding:28px;
+    transition:transform .18s,box-shadow .18s,border-color .18s;
+  }
+  .service-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(20,24,31,0.08);border-color:transparent;}
+  .service-tag{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;
+    color:var(--accent);text-transform:uppercase;margin-bottom:14px;display:block;
+  }
+  .service-card h3{font-size:19px;margin-bottom:10px;}
+  .service-card ul{margin:14px 0 0;padding-left:18px;color:var(--ink-muted);font-size:14.5px;}
+  .service-card li{margin-bottom:5px;}
 
-        #hero {
-            padding-top: 10rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            min-height: 80vh;
-            justify-content: center;
-        }
+  /* ---------- Process / funnel ---------- */
+  .funnel{max-width:720px;margin:0 auto;}
+  .step{
+    border-radius:var(--radius);padding:24px 30px;margin:0 auto;
+    display:flex;align-items:baseline;gap:20px;text-align:left;
+  }
+  .step-num{font-family:'JetBrains Mono',monospace;font-size:13px;opacity:0.75;flex:none;}
+  .step h3{font-size:18px;margin-bottom:4px;}
+  .step p{font-size:14.5px;opacity:0.9;}
+  .step-1{max-width:100%;background:var(--step1);color:var(--ink);}
+  .step-2{max-width:87%;background:var(--step2);color:var(--ink);}
+  .step-3{max-width:74%;background:var(--step3);color:#0B2419;}
+  .step-4{max-width:61%;background:var(--step4);color:#fff;}
+  .step-5{max-width:48%;background:var(--step5);color:#fff;}
+  .step + .step{margin-top:10px;}
+  .funnel-arrow{
+    text-align:center;color:var(--ink-muted);font-size:13px;margin:2px 0;font-family:'JetBrains Mono',monospace;
+  }
 
-        #hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
+  /* ---------- Results ---------- */
+  .results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+  .result-card{
+    border:1px solid var(--line);border-radius:var(--radius);padding:30px;
+    transition:transform .18s,box-shadow .18s;
+  }
+  .result-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(20,24,31,0.08);}
+  .result-metric{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:600;color:var(--accent);}
+  .result-label{font-size:12.5px;color:var(--ink-muted);margin:6px 0 16px;font-family:'JetBrains Mono',monospace;letter-spacing:0.04em;}
+  .result-card p.desc{font-size:14.5px;color:var(--ink-muted);}
 
-        #hero h1 span {
-            color: var(--primary);
-        }
+  /* ---------- About ---------- */
+  .about{display:flex;gap:56px;align-items:flex-start;flex-wrap:wrap;}
+  .avatar{
+    width:120px;height:120px;border-radius:50%;background:var(--ink);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;
+    font-size:34px;font-weight:600;flex:none;
+  }
+  .about-text{flex:1;min-width:280px;}
+  .about-text p{color:var(--ink-muted);font-size:16.5px;margin-bottom:14px;max-width:60ch;}
+  .about-text a.inline-link{color:var(--accent);border-bottom:1px solid var(--accent);}
 
-        #hero p {
-            font-size: 1.25rem;
-            color: var(--grey);
-            max-width: 600px;
-            margin-bottom: 2rem;
-        }
+  /* ---------- Testimonials ---------- */
+  .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+  .testi-card{background:var(--accent-soft);border-radius:var(--radius);padding:30px;}
+  .testi-quote{font-size:16px;color:var(--ink);margin-bottom:20px;}
+  .testi-who{font-size:13.5px;color:var(--ink-muted);font-family:'JetBrains Mono',monospace;}
 
-        .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s, background 0.3s;
-        }
+  /* ---------- Contact ---------- */
+  .contact-section{background:var(--dark);color:var(--dark-ink);}
+  .contact-section .eyebrow{color:var(--highlight);}
+  .contact-section .section-sub{color:var(--dark-muted);}
+  .contact-grid{display:flex;gap:64px;flex-wrap:wrap;}
+  .contact-form{flex:1;min-width:300px;}
+  .field{margin-bottom:22px;}
+  .field label{display:block;font-size:13px;color:var(--dark-muted);margin-bottom:8px;font-family:'JetBrains Mono',monospace;letter-spacing:0.04em;}
+  .field input,.field select,.field textarea{
+    width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.25);
+    color:var(--dark-ink);font-family:'Inter',sans-serif;font-size:15.5px;padding:10px 0;
+  }
+  .field select option{color:#000;}
+  .field input:focus,.field select:focus,.field textarea:focus{border-bottom-color:var(--highlight);outline:none;}
+  .field textarea{resize:vertical;min-height:90px;}
+  .contact-form .btn-primary{background:var(--highlight);color:#20180A;margin-top:8px;}
+  .contact-form .btn-primary:hover{background:#ffd685;}
+  .contact-direct{flex:1;min-width:260px;}
+  .contact-direct h3{font-size:17px;margin-bottom:18px;color:var(--dark-ink);}
+  .contact-line{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.12);font-size:15px;}
+  .contact-line span:first-child{color:var(--dark-muted);}
+  .contact-line a{color:var(--dark-ink);}
+  .contact-line a:hover{color:var(--highlight);}
 
-        .btn:hover {
-            transform: translateY(-2px);
-            background: #0056b3;
-        }
+  /* ---------- Footer ---------- */
+  footer{background:var(--dark);color:var(--dark-muted);border-top:1px solid rgba(255,255,255,0.1);}
+  .footer-inner{
+    max-width:var(--maxw);margin:0 auto;padding:32px 28px;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:13.5px;
+  }
+  .footer-links{display:flex;gap:20px;list-style:none;padding:0;margin:0;}
+  .footer-links a:hover{color:var(--dark-ink);}
 
-        h2 {
-            font-size: 2.25rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
+  /* ---------- Reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+    .service-card,.result-card,.btn-primary{transition:none;}
+  }
 
-        h2::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 4px;
-            background: var(--primary);
-            margin: 0.5rem auto 0;
-            border-radius: 2px;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2.5rem 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            border: 1px solid #e2e8f0;
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-card h3 {
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .service-card p {
-            color: var(--grey);
-            font-size: 0.95rem;
-        }
-
-        #contact {
-            text-align: center;
-        }
-
-        .contact-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 3rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            border: 1px solid #e2e8f0;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #cbd5e1;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        footer {
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 5rem;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            #hero h1 { font-size: 2.5rem; }
-            nav { display: none; }
-        }
-    </style>
+  @media (max-width:640px){
+    section{padding:64px 0;}
+    .about{flex-direction:column;}
+    .step{flex-direction:column;gap:4px;padding:20px 22px;}
+    .step-1,.step-2,.step-3,.step-4,.step-5{max-width:100%;}
+  }
+</style>
 </head>
 <body>
 
-    <header>
-        <div class="nav-container">
-            <div class="logo">TG.</div>
-            <nav>
-                <a href="#hero">Home</a>
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <a href="#contact">Contact</a>
-            </nav>
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo">Tanbeer <span>Gazi</span></a>
+    <input type="checkbox" id="menu-toggle">
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Book a call</a>
+      <label for="menu-toggle" class="burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="status-strip"><span class="status-dot"></span><span class="mono">OPEN FOR NEW PROJECTS · REMOTE · SEO — PAID MEDIA — EMAIL</span></div>
+      <h1>Campaigns that <em>pay for themselves.</em></h1>
+      <p class="hero-sub">I'm Tanbeer Gazi, a digital marketer helping founders and small teams turn ad spend, content and email into predictable pipeline — not just impressions.</p>
+      <div class="hero-cta-row">
+        <a href="#contact" class="btn-primary">Book a free strategy call</a>
+        <a href="#process" class="btn-secondary">See how I work →</a>
+      </div>
+      <div class="channel-strip">
+        <span class="channel-tag">SEO</span>
+        <span class="channel-tag">PAID SEARCH</span>
+        <span class="channel-tag">META ADS</span>
+        <span class="channel-tag">EMAIL</span>
+        <span class="channel-tag">CONTENT</span>
+        <span class="channel-tag">CRO &amp; ANALYTICS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Services</span>
+        <h2>Where I can help</h2>
+        <p class="section-sub">Pick one channel or hand me the whole growth engine — either way, everything is tied back to leads and revenue, not vanity metrics.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <span class="service-tag">SEO</span>
+          <h3>Organic growth that compounds</h3>
+          <ul>
+            <li>Keyword &amp; content strategy</li>
+            <li>Technical &amp; on-page fixes</li>
+            <li>Link building &amp; authority</li>
+          </ul>
         </div>
-    </header>
-
-    <section id="hero">
-        <h1>Hi, I'm <span>Tanbeer Gazi</span></h1>
-        <p>A Results-Driven Digital Marketer Helping Brands Grow Online Through Strategic SEO, Paid Ads, and Content Marketing.</p>
-        <a href="#contact" class="btn">Let's Work Together</a>
-    </section>
-
-    <hr style="border: 0; height: 1px; background: #e2e8f0;">
-
-    <section id="about">
-        <h2>About Me</h2>
-        <p style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--grey); font-size: 1.1rem;">
-            I specialize in building comprehensive digital strategies that connect brands with their ideal audience. From optimizing your search footprint to running high-ROI ad campaigns, I focus on measurable growth and data-backed decisions to help your business scale.
-        </p>
-    </section>
-
-    <section id="services">
-        <h2>My Expertise</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Search Engine Optimization</h3>
-                <p>Boost your organic visibility, rank higher on Google, and drive targeted traffic to your site with on-page and technical SEO.</p>
-            </div>
-            <div class="service-card">
-                <h3>Paid Advertising (PPC)</h3>
-                <p>Maximize your ROI with highly optimized Google Ads, Facebook Ads, and Instagram campaigns designed to convert clicks into customers.</p>
-            </div>
-            <div class="service-card">
-                <h3>Social Media Strategy</h3>
-                <p>Build an engaged online community, refine your brand voice, and schedule impactful organic social content.</p>
-            </div>
+        <div class="service-card reveal">
+          <span class="service-tag">Paid Media</span>
+          <h3>Google, Meta &amp; beyond</h3>
+          <ul>
+            <li>Campaign structure &amp; targeting</li>
+            <li>Creative &amp; offer testing</li>
+            <li>Budget &amp; bid management for ROAS</li>
+          </ul>
         </div>
-    </section>
-
-    <section id="contact">
-        <h2>Get In Touch</h2>
-        <div class="contact-container">
-            <form action="#" method="POST" onsubmit="alert('Thank you for reaching out! Your form has been submitted.'); return false;">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" required placeholder="Your Name">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required placeholder="your.email@example.com">
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" rows="5" required placeholder="Tell me about your project..."></textarea>
-                </div>
-                <button type="submit" class="btn" style="border: none; width: 100%; cursor: pointer;">Send Message</button>
-            </form>
+        <div class="service-card reveal">
+          <span class="service-tag">Social Media</span>
+          <h3>Content that builds an audience</h3>
+          <ul>
+            <li>Content calendars &amp; formats</li>
+            <li>Organic growth strategy</li>
+            <li>Community &amp; engagement</li>
+          </ul>
         </div>
-    </section>
+        <div class="service-card reveal">
+          <span class="service-tag">Email Marketing</span>
+          <h3>Owned audience, owned revenue</h3>
+          <ul>
+            <li>List building &amp; segmentation</li>
+            <li>Lifecycle &amp; automation flows</li>
+            <li>Copy built to convert</li>
+          </ul>
+        </div>
+        <div class="service-card reveal">
+          <span class="service-tag">Content</span>
+          <h3>Stories that rank and convert</h3>
+          <ul>
+            <li>Blog &amp; landing page copy</li>
+            <li>Briefs aligned to SEO intent</li>
+            <li>Distribution strategy</li>
+          </ul>
+        </div>
+        <div class="service-card reveal">
+          <span class="service-tag">Analytics &amp; CRO</span>
+          <h3>Know what's actually working</h3>
+          <ul>
+            <li>Tracking &amp; attribution setup</li>
+            <li>Funnel &amp; landing page audits</li>
+            <li>A/B testing roadmap</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p>&copy; 2026 Tanbeer Gazi. All rights reserved.</p>
-    </footer>
+  <!-- PROCESS / FUNNEL -->
+  <section id="process" style="background:var(--accent-soft);">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Process</span>
+        <h2>How an engagement works</h2>
+        <p class="section-sub">Five steps, same shape as the funnel we're building together — broad discovery narrowing down to a repeatable result.</p>
+      </div>
+      <div class="funnel">
+        <div class="step step-1 reveal">
+          <span class="step-num mono">01</span>
+          <div><h3>Discovery call</h3><p>We talk through your business, goals, budget and what "success" needs to look like.</p></div>
+        </div>
+        <div class="funnel-arrow">▼</div>
+        <div class="step step-2 reveal">
+          <span class="step-num mono">02</span>
+          <div><h3>Strategy &amp; roadmap</h3><p>I audit what exists, then map the channels and priorities most likely to move revenue.</p></div>
+        </div>
+        <div class="funnel-arrow">▼</div>
+        <div class="step step-3 reveal">
+          <span class="step-num mono">03</span>
+          <div><h3>Launch &amp; execute</h3><p>Campaigns, content and pages go live, built to a clear tracking &amp; reporting plan.</p></div>
+        </div>
+        <div class="funnel-arrow">▼</div>
+        <div class="step step-4 reveal">
+          <span class="step-num mono">04</span>
+          <div><h3>Optimize &amp; test</h3><p>We review performance weekly, kill what's underperforming, and double down on what works.</p></div>
+        </div>
+        <div class="funnel-arrow">▼</div>
+        <div class="step step-5 reveal">
+          <span class="step-num mono">05</span>
+          <div><h3>Report &amp; scale</h3><p>A plain-English monthly report tied to leads and revenue, plus a plan to scale the winners.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <!-- NOTE for Tanbeer: swap the three cards below for your own real client results before publishing. -->
+  <section id="results">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Selected results</span>
+        <h2>Recent wins</h2>
+        <p class="section-sub">A few snapshots from recent campaigns — happy to share full case studies on a call.</p>
+      </div>
+      <div class="results-grid">
+        <div class="result-card reveal">
+          <div class="result-metric">+142%</div>
+          <div class="result-label">D2C SKINCARE BRAND · ORGANIC TRAFFIC</div>
+          <p class="desc">Rebuilt technical SEO foundation and content strategy, growing organic sessions 142% in 6 months.</p>
+        </div>
+        <div class="result-card reveal">
+          <div class="result-metric">-38%</div>
+          <div class="result-label">B2B SAAS STARTUP · COST PER LEAD</div>
+          <p class="desc">Restructured paid search campaigns and landing pages to cut cost-per-lead while holding volume.</p>
+        </div>
+        <div class="result-card reveal">
+          <div class="result-metric">3.1x</div>
+          <div class="result-label">LOCAL SERVICES CO. · EMAIL REVENUE</div>
+          <p class="desc">Redesigned lifecycle flows and a win-back campaign to more than triple email-attributed revenue.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="background:var(--accent-soft);">
+    <div class="wrap">
+      <div class="about reveal">
+        <div class="avatar">TG</div>
+        <div class="about-text">
+          <span class="eyebrow">About</span>
+          <h2 style="font-size:26px;margin-bottom:14px;">Hi, I'm Tanbeer.</h2>
+          <p>I'm a digital marketer who likes marketing that has to justify its own budget. My background is across SEO, paid media and email, and I work best with founders and small teams who want a straight answer on what's working and what isn't.</p>
+          <p>I keep a small client roster on purpose — every engagement gets weekly attention, not a rotating account manager. <a href="#contact" class="inline-link">Let's talk about your goals</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <!-- NOTE for Tanbeer: replace with real client quotes once you have them. -->
+  <section id="testimonials">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Testimonials</span>
+        <h2>What clients say</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <p class="testi-quote">"Tanbeer rebuilt our paid search from scratch and our cost per lead dropped within the first month. Reporting is clear and jargon-free."</p>
+          <p class="testi-who">— [Client Name], Founder, [Company]</p>
+        </div>
+        <div class="testi-card reveal">
+          <p class="testi-quote">"We finally understand which channels are actually driving revenue. Best marketing hire we've made."</p>
+          <p class="testi-who">— [Client Name], Head of Growth, [Company]</p>
+        </div>
+        <div class="testi-card reveal">
+          <p class="testi-quote">"Responsive, honest about what won't work, and the email flows alone paid for the engagement."</p>
+          <p class="testi-who">— [Client Name], Co-founder, [Company]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Contact</span>
+        <h2>Let's build your next campaign</h2>
+        <p class="section-sub">Tell me a bit about your business and goals — I'll reply within 1–2 business days.</p>
+      </div>
+      <div class="contact-grid">
+        <form class="contact-form reveal" id="leadForm">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="company">Company (optional)</label>
+            <input type="text" id="company" name="company">
+          </div>
+          <div class="field">
+            <label for="budget">Monthly budget range</label>
+            <select id="budget" name="budget">
+              <option>Under $1,000/mo</option>
+              <option>$1,000–$5,000/mo</option>
+              <option>$5,000+/mo</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="message">What are you looking to achieve?</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Send email</button>
+        </form>
+        <div class="contact-direct reveal">
+          <h3>Prefer to reach out directly?</h3>
+          <div class="contact-line"><span>Email</span><a href="mailto:hello@tanbeergazi.com">hello@tanbeergazi.com</a></div>
+          <div class="contact-line"><span>Phone / WhatsApp</span><a href="tel:+10000000000">+1 (000) 000-0000</a></div>
+          <div class="contact-line"><span>LinkedIn</span><a href="#" target="_blank" rel="noopener">linkedin.com/in/tanbeergazi</a></div>
+          <div class="contact-line"><span>Instagram</span><a href="#" target="_blank" rel="noopener">@tanbeergazi</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>Tanbeer Gazi — Digital Marketer · © 2026</span>
+    <ul class="footer-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  // Scroll-reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+
+  // Contact form -> mailto (static site, no backend)
+  const form = document.getElementById('leadForm');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const company = document.getElementById('company').value;
+    const budget = document.getElementById('budget').value;
+    const message = document.getElementById('message').value;
+
+    const subject = encodeURIComponent(`New project inquiry from ${name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nBudget: ${budget}\n\nMessage:\n${message}`
+    );
+    window.location.href = `mailto:hello@tanbeergazi.com?subject=${subject}&body=${body}`;
+  });
+</script>
 
 </body>
 </html>
